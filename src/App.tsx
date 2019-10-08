@@ -1,16 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Card from './components/Card';
+import CartItem from './components/CartItem';
 
 import catalog from './static/catalog';
+import { Item } from './types';
 
 const App: React.FC = () => {
+  const [shoppingList, setShoppingList] = useState([
+    {
+      name: "Italian Soda",
+      price: 40
+    }
+  ]);
+
+  function addToList(_item: Item) {
+    setShoppingList([
+      ...shoppingList,
+      _item
+    ]);
+  }
+  
   return (
     <div className="App">
       <Navbar />
       <div className="flex mb-4">
-        <div className="flex w-1/4 bg-gray-400 h-12">
-          
+        <div className="flex flex-col w-1/4 bg-gray-400 p-3">
+          <div className="flex-1">
+            <p className="text-xl font-semibold">Cart</p>
+          </div>
+          <div className="flex-1">
+            {
+              shoppingList.map(item => (
+                <CartItem 
+                  item={{
+                    name: item.name,
+                    price: item.price
+                  }}
+                />
+              ))
+            }
+          </div>
         </div>
         <div className="flex flex-wrap w-3/4 h-12 p-3">
           {
@@ -21,6 +51,7 @@ const App: React.FC = () => {
                   image: product.image,
                   price: product.price
                 }}
+                handlePush={addToList}
               />
             ))
           }
