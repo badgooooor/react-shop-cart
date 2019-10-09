@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # tailwind build file
-/src/css/tailwind.css
+src/css/tailwind.src.css
