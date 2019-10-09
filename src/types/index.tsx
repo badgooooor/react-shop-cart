@@ -8,3 +8,8 @@ export interface Item {
   name: string;
   price: number;
 }
+
+export interface Cart {
+  number: number;
+  sum: number;
+}
