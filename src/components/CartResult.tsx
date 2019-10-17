@@ -8,7 +8,7 @@ interface Props {
 const CartResult = ({ cart }: Props) => {
 
   return(
-    <div>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <p>No. of items : {cart.number}</p>
       <p>Sum : {cart.sum}</p>
     </div>
